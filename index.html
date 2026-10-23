@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Kirana ♡</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: Georgia, serif;
+            color: #803653;
+            background: linear-gradient(
+                135deg,
+                #ffc2dc,
+                #ff91bf,
+                #ffe0ed
+            );
+        }
+
+        /* PENGATURAN SLIDE */
+        .slide {
+            display: none;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* =========================
+           SLIDE 1 - HALAMAN PEMBUKA
+        ========================= */
+
+        #slide1 {
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+            overflow: hidden;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 3;
+            animation: welcomeAppear 1s ease;
+        }
+
+        .welcome-decoration {
+            font-size: 45px;
+            margin-bottom: 20px;
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+
+        .welcome-content h1 {
+            font-size: clamp(34px, 8vw, 58px);
+            font-weight: normal;
+            letter-spacing: 2px;
+            color: #a13c69;
+            margin-bottom: 15px;
+            text-shadow: 2px 3px 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .welcome-content p {
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            color: #984766;
+            margin-bottom: 30px;
+        }
+
+        .press-button {
+            padding: 14px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.65);
+            color: #a13c69;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(155, 57, 100, 0.15);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+
+        .press-button:hover {
+            transform: translateY(-4px) scale(1.04);
+            background: #fff0f7;
+            box-shadow: 0 8px 25px rgba(155, 57, 100, 0.22);
+        }
+
+        .welcome-small {
+            margin-top: 22px;
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        @keyframes welcomeAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-9px) rotate(5deg);
+            }
+        }
+
+        /* DEKORASI SLIDE 1 */
+        .welcome-float {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.65;
+            animation: floatAround 7s ease-in-out infinite;
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(15deg);
+            }
+        }
+
+        /* =========================
+           SLIDE 2 - SURAT ULTAH
+        ========================= */
+
+        #slide2 {
+            display: none;
+            flex-direction: column;
+        }
+
+        #slide2.active {
+            display: flex;
+        }
+
+        header {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 28px 15px;
+            background: rgba(255, 255, 255, 0.28);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            color: #a13c69;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* ANIMASI DI BELAKANG SURAT */
+        .animation-layer {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            min-height: calc(100vh - 100px);
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .poem-card {
+            width: 100%;
+            max-width: 650px;
+            padding: 40px 30px;
+            text-align: center;
+            background: rgba(255, 245, 250, 0.48);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 22px;
+            box-shadow: 0 10px 35px rgba(150, 55, 100, 0.12);
+            position: relative;
+            z-index: 2;
+            animation: welcomeAppear 0.9s ease;
+        }
+
+        .poem {
+            font-size: 16px;
+            line-height: 2;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+            color: #783653;
+            position: relative;
+            z-index: 3;
+        }
+
+        .heart {
+            margin-top: 25px;
+            font-size: 26px;
+        }
+
+        /* CAKE TERBANG KE ATAS */
+        .cake {
+            position: absolute;
+            bottom: -70px;
+            animation: cakeFly linear infinite;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        @keyframes cakeFly {
+            0% {
+                transform: translate(0, 0) rotate(-15deg);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translate(45px, -55vh) rotate(180deg);
+                opacity: 0.85;
+            }
+
+            100% {
+                transform: translate(-30px, -115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* BUNGA BERJATUHAN */
+        .flower {
+            position: absolute;
+            top: -60px;
+            animation: flowerFall linear infinite;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        @keyframes flowerFall {
+            0% {
+                transform: translate(0, -30px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.95;
+            }
+
+            50% {
+                transform: translate(65px, 50vh) rotate(180deg);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translate(-45px, 115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* TOMBOL KEMBALI */
+        .back-button {
+            margin-top: 25px;
+            padding: 10px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.55);
+            color: #a13c69;
+            font-family: Georgia, serif;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 29px;
+            }
+
+            .poem-card {
+                padding: 30px 20px;
+            }
+
+            .poem {
+                font-size: 14px;
+                line-height: 1.9;
+            }
+
+            .welcome-content p {
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         SLIDE 1: WELCOME
+    ========================== -->
+
+    <section id="slide1" class="slide active">
+
+        <!-- DEKORASI HALAMAN PEMBUKA -->
+        <span class="welcome-float"
+              style="top: 12%; left: 10%; font-size: 30px;">🌸</span>
+
+        <span class="welcome-float"
+              style="top: 22%; right: 12%; font-size: 35px; animation-delay: 1s;">🤍</span>
+
+        <span class="welcome-float"
+              style="bottom: 20%; left: 15%; font-size: 28px; animation-delay: 2s;">🎂</span>
+
+        <span class="welcome-float"
+              style="bottom: 15%; right: 13%; font-size: 32px; animation-delay: 0.5s;">🌷</span>
+
+        <span class="welcome-float"
+              style="top: 48%; left: 5%; font-size: 22px; animation-delay: 1.5s;">♡</span>
+
+        <span class="welcome-float"
+              style="top: 55%; right: 6%; font-size: 25px; animation-delay: 2.5s;">♡</span>
+
+        <!-- TEKS PEMBUKA -->
+        <div class="welcome-content">
+
+            <div class="welcome-decoration">🎀</div>
+
+            <h1>HIII KIRANA!!</h1>
+
+            <p>
+                heyy, i made a lil smth for u<br>
+                wanna see what it is?
+            </p>
+
+            <button class="press-button" onclick="showSlide2()">
+                press this
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SLIDE 2: BIRTHDAY LETTER
+    ========================== -->
+
+    <section id="slide2" class="slide">
+
+        <!-- HEADER -->
+        <header>
+            <h1>dear kirana</h1>
+            <p>a little note for u</p>
+        </header>
+
+        <!-- ANIMASI BUNGA DAN CAKE -->
+        <div class="animation-layer" aria-hidden="true">
+
+            <!-- CAKE BERTERBANGAN -->
+            <span class="cake"
+                  style="left: 5%; font-size: 30px; animation-duration: 10s; animation-delay: 0s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 17%; font-size: 25px; animation-duration: 13s; animation-delay: 3s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 30%; font-size: 34px; animation-duration: 11s; animation-delay: 5s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 43%; font-size: 27px; animation-duration: 14s; animation-delay: 1s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 57%; font-size: 32px; animation-duration: 12s; animation-delay: 6s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 70%; font-size: 25px; animation-duration: 10s; animation-delay: 2s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 83%; font-size: 35px; animation-duration: 13s; animation-delay: 4s;">🎂</span>
+
+            <span class="cake"
+                  style="left: 94%; font-size: 27px; animation-duration: 11s; animation-delay: 7s;">🎂</span>
+
+
+            <!-- BUNGA BERJATUHAN -->
+            <span class="flower"
+                  style="left: 3%; font-size: 28px; animation-duration: 8s; animation-delay: 0s;">💮</span>
+
+            <span class="flower"
+                  style="left: 13%; font-size: 24px; animation-duration: 10s; animation-delay: 2s;">🌸</span>
+
+            <span class="flower"
+                  style="left: 24%; font-size: 32px; animation-duration: 9s; animation-delay: 4s;">💮</span>
+
+            <span class="flower"
+                  style="left: 36%; font-size: 26px; animation-duration: 11s; animation-delay: 1s;">🌸</span>
+
+            <span class="flower"
+                  style="left: 47%; font-size: 30px; animation-duration: 8s; animation-delay: 5s;">💮</span>
+
+            <span class="flower"
+                  style="left: 59%; font-size: 25px; animation-duration: 12s; animation-delay: 3s;">🌸</span>
+
+            <span class="flower"
+                  style="left: 70%; font-size: 33px; animation-duration: 9s; animation-delay: 6s;">💮</span>
+
+            <span class="flower"
+                  style="left: 81%; font-size: 27px; animation-duration: 10s; animation-delay: 2s;">🌸</span>
+
+            <span class="flower"
+                  style="left: 92%; font-size: 30px; animation-duration: 11s; animation-delay: 4s;">💮</span>
+
+        </div>
+
+        <!-- SURAT ULANG TAHUN -->
+        <main class="container">
+
+            <section class="poem-card">
+
+                <div class="poem">hii, happy birthday!!
+i hope this new age brings u lots of happiness and good things. as u get older, i hope u learn to take better care of urself and always stay safe from people who might not have the best intentions.
+
+if u know, i'm actually really happy that we get to talk again after being out of touch for years. it's nice knowing that we're still in each other's lives somehow, even if we don't talk that much or get to see each other like we used to.
+
+anw, u deserve a guy who's right for u, ra. so don't ever think that you're not meant for anyone or that u won't find someone who fits u. maybe u just haven't met the right person yet, someone who matches ur vibe and what u're lookin' for.
+or maybe... just maybe... that person could be me. (NAHHH I'M JS KIDDING 🙏)
+
+anyway, that's pretty much all i wanted to say. i genuinely hope things go well for u, that u find more reasons to smile, and that life brings u the happiness u deserve.
+happy 17th birthday, kiranuy!! hope this year's gonna be good to u.</div>
+
+                <button class="back-button" onclick="showSlide1()">
+                    back to the beginning
+                </button>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT SLIDE
+    ========================== -->
+
+    <script>
+        const slide1 = document.getElementById("slide1");
+        const slide2 = document.getElementById("slide2");
+
+        function showSlide2() {
+            slide1.classList.remove("active");
+            slide2.classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function showSlide1() {
+            slide2.classList.remove("active");
+            slide1.classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+</body>
+</html>
